@@ -1,53 +1,44 @@
 
-
 #include <iostream>
 using namespace std;
 
 int main()
 {
-   int counter = 0;
-   int number;
-   int largest;
-   int secondLargest;
 
-   cout << "Enter the first number: ";
-   cin >> largest;
-
-   cout << "Enter next number: ";
-   cin >> number;
+   int passes = 0;
+   int failures = 0;
+   int studentCounter = 1;
+   int result;
 
 
-   if ( number > largest )
+   while ( studentCounter <= 10 )
    {
-      secondLargest = largest;
-      largest = number;
-   }
-   else
-      secondLargest = number;
 
-   counter = 2;
+      cout << "Enter result (1 = pass, 2 = fail): ";
+      cin >> result;
 
-
-   while ( counter < 10 )
-   {
-      cout << "Enter next number: ";
-      cin >> number;
-
-
-      if ( number > largest )
+      if ( result == 1 )
       {
-         secondLargest = largest;
-         largest = number;
+         passes = passes + 1;
+         studentCounter = studentCounter + 1;
       }
-      else if ( number > secondLargest )
-         secondLargest = number;
-
-      counter++;
+      else if ( result == 2 )
+      {
+         failures = failures + 1;
+         studentCounter = studentCounter + 1;
+      }
+      else
+      {
+         cout << "Invalid input" << endl;
+      }
    }
 
 
-   cout << "\nLargest is " <<  largest
-      << "\nSecond largest is " << secondLargest << endl;
+   cout << "Passed " << passes << "\nFailed " << failures << endl;
+
+
+   if ( passes > 8 )
+      cout << "Bonus to instructor!" << endl;
 }
 
 

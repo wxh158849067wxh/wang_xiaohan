@@ -1,0 +1,38 @@
+
+#ifndef POLYNOMIAL_H_INCLUDED
+#define POLYNOMIAL_H_INCLUDED
+#include <iostream>
+#include <cmath>
+#include <string>
+using namespace std;
+class Polynomial
+{
+public:
+    friend ostream &operator<<(ostream &,const Polynomial &);
+    friend istream &operator>>(istream &,Polynomial &);
+    explicit Polynomial(int =10);
+    Polynomial (const Polynomial &);
+    ~Polynomial();
+    void setPolynomial(int);
+    int getPolynomial();
+    Polynomial &operator+(Polynomial &);
+    Polynomial &operator-(Polynomial &);
+    const Polynomial &operator=(Polynomial &);
+    Polynomial &operator*(Polynomial &);
+    Polynomial &operator+=(Polynomial &);
+    Polynomial &operator-=(Polynomial &);
+    Polynomial &operator*=(Polynomial &);
+private:
+    size_t size1;
+    int *ptr;
+
+};
+
+
+
+#endif // POLYNOMIAL_H_INCLUDED
+
+
+
+
+

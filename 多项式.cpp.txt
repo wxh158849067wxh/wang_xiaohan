@@ -1,0 +1,137 @@
+#include <iostream>
+#include <string>
+#include "Polynomial.h"
+#include <iomanip>
+#include <stdexcept>
+using namespace std;
+
+Polynomial::Polynomial(int sizes)
+  :size1(sizes>0?sizes:throw invalid_argument ("must greater than 0")),
+  ptr ( new int [size1])
+  {
+      for (size_t i =0; i<size1;++i)
+        ptr[i]=0;
+  }
+  Polynomial::Polynomial( const Polynomial &tocopy)
+  :size1(tocopy.size1),ptr(new int [size1])
+  {
+
+
+  for (size_t i=0;i<size1;++i)
+  {
+      ptr[i]=tocopy.ptr[i];
+  }
+  }
+  Polynomial::~Polynomial()
+  {
+      delete []ptr;
+  }
+  int Polynomial::getPolynomial()
+  {
+      return size1;
+  }
+  Polynomial &Polynomial::operator+(Polynomial &right)
+  {
+     if((*this).size1=right.size1)
+    {
+      for(size_t i =0;i<size1;++i)
+      {
+        ((*this).ptr[i]=(*this).ptr[i]+right.ptr[i]);
+      }
+
+    }
+    return *this;
+  }
+  Polynomial &Polynomial::operator-(Polynomial &right)
+  {
+      if((*this).size1==right.size1)
+      {
+          for(size_t i =0;i<size1;++i)
+          {
+               ((*this).ptr[i]=(*this).ptr[i]-right.ptr[i]);
+          }
+      }
+      return *this;
+  }
+  const Polynomial &Polynomial::operator=(Polynomial &right)
+  {
+      delete[]ptr;
+      (*this).size1=right.size1;
+      ptr=new int [size1];
+      for(size_t i =0;i<size1;++i)
+        ptr[i]=right.ptr[i];
+
+  }
+  Polynomial &Polynomial::operator*(Polynomial &right)
+  {
+      double n=0;
+      for(size_t i =0;i<size1;++i)
+      {
+
+         n=n+right.ptr[i];
+      }
+      for(size_t i =0;i<size1;++i)
+        ptr[i]=ptr[i]*n;
+        return *this;
+  }
+  Polynomial &Polynomial::operator+=(Polynomial &right)
+  {
+      if(size1==right.size1)
+      {
+          for(size_t i =0;i<size1;++i)
+            ptr[i]=ptr[i]+right.ptr[i];
+      }
+      else
+      {
+         cout<<"can not product a value"<<endl;
+      }
+        return *this;
+
+  }
+  Polynomial &Polynomial::operator-=(Polynomial &right)
+  {
+      if(size1==right.size1)
+      {
+          for(size_t i =0;i<size1;++i)
+            ptr[i]=ptr[i]-right.ptr[i];
+      }
+      else
+      {
+          cout<<"can not product a value"<<endl;
+      }
+      return *this;
+  }
+  Polynomial &Polynomial::operator*=(Polynomial &right)
+  {      double n=0;
+      for(size_t i =0;i<size1;++i)
+      {
+        n=n+right.ptr[i];
+      }
+      for(size_t i =0;i<size1;++i)
+        ptr[i]=n*ptr[i];
+      return *this;
+
+  }
+  ostream &operator<<(ostream &output,const Polynomial &a)
+  {
+      for(size_t i =0;i<a.size1;++i)
+      {
+          output<<a.ptr[i]<<"+";
+      }
+      cout<<"0"<<endl;
+      return output;
+  }
+  istream &operator>>(istream &input,Polynomial &a)
+  {
+      for(size_t i =0;i<a.size1;++i)
+        {
+            input>>a.ptr[i];
+            input.ignore(1);
+        }
+        return input;
+  }
+
+
+
+
+

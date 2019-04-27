@@ -1,11 +1,12 @@
 #include <iostream>
 #include <string>
 #include "Package.h"
+#include <iomanip>
 using namespace std;
 Package::Package(string sn,string r,string a,string c,string s,long po,double w,double p)
 :sname(sn),rname(r),address(a),city(c),state(s),postnumber(po), weight(w>0?w:throw invalid_argument("weight must exceed 0") ), price(p>0?p:throw invalid_argument("price must exceed 0"))
 {
-  calculateCost(w,p);
+
 }
 void Package::setSName(string sn)
 {
@@ -71,7 +72,7 @@ double Package::getPrice()
 {
     return price;
 }
-double calculateCost(double weight,double price)
+double Package::calculateCost()
 {
     return (weight*price);
 }

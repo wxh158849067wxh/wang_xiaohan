@@ -6,7 +6,8 @@ TwoDayPackage::TwoDayPackage(const string &sn,const string &r,const string &a,co
 :Package(sn,r,a,c,s,ps,w,p)
 {
    setTwoPrice(tp);
-   calculateCost(w,p,tp);
+
+
 }
 void TwoDayPackage::setTwoPrice(double tp)
 {
@@ -23,7 +24,7 @@ double TwoDayPackage::getTwoPrice()
 {
     return twoprice;
 }
-double TwoDayPackage::calculateCost(double w,double p,double tp)
+double TwoDayPackage::calculateCost()
 {
-    return (tp+w*p);
+    return (twoprice+getWeight()*getPrice());
 }

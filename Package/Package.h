@@ -2,6 +2,7 @@
 #define PACKAGE_H_INCLUDED
 #include <iostream>
 #include <string>
+
 using namespace std;
 class Package
 {
@@ -23,7 +24,7 @@ public:
     double getWeight();
     void setPrice(double);
     double getPrice();
-    double calculateCost(double,double);
+    double calculateCost();
 
 
 private:

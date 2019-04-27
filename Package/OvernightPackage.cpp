@@ -6,7 +6,7 @@ OvernightPackage::OvernightPackage(const string &sn,const string &r,const string
 :Package(sn,r,a,c,s,ps,w,p)
 {
     setExtremePrice(ep);
-    calculateCost(w,p,ep);
+
 }
 void OvernightPackage::setExtremePrice(double ep)
 {
@@ -23,7 +23,7 @@ double OvernightPackage::getExtremePrice()
 {
     return extremeprice;
 }
-double OvernightPackage::calculateCost(double w,double p,double ep)
+double OvernightPackage::calculateCost()
 {
-    return w*(p+ep);
+    return (getWeight()*(getPrice()+extremeprice));
 }
